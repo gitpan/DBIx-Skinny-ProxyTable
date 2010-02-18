@@ -1,7 +1,7 @@
 package DBIx::Skinny::ProxyTable;
 use strict;
 use warnings;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 use DBIx::Skinny::ProxyTable::Rule;
 use Carp;
 
@@ -65,7 +65,7 @@ sub copy_table {
     if ( $dbd && $dbd =~ /^DBIx::Skinny::DBD::(.+)$/ ) {
         $dbd = $1;
         if ( $dbd eq 'mysql' ) {
-            $self->skinny->do(sprintf(q{ CREATE TABLE IF NOT EXISTS %s LIKE %s }, $from, $to));
+            $self->skinny->do(sprintf(q{ CREATE TABLE IF NOT EXISTS %s LIKE %s }, $to, $from));
         } elsif ( $dbd eq 'SQLite' ) {
             my $record = $self->skinny->search_by_sql(q{
                 SELECT sql FROM
@@ -120,7 +120,7 @@ DBIx::Skinny::ProxyTable -
   $rule->table_name; #=> "access_log_200901"
   $rule->copy_table;
 
-  my $iter = $rule->search({ foo => 'bar' });
+  my $iter = Proj::DB->search($rule->table_name, { foo => 'bar' });
 
 =head1 DESCRIPTION
 

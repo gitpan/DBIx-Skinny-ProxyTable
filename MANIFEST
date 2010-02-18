@@ -1,5 +1,4 @@
 Changes
-inc/DateTime.pm
 inc/Module/Install.pm
 inc/Module/Install/AuthorTests.pm
 inc/Module/Install/Base.pm
@@ -19,7 +18,6 @@ inc/Test/Builder.pm
 inc/Test/Builder/Module.pm
 inc/Test/LoadAllModules.pm
 inc/Test/More.pm
-inc/Time/Piece.pm
 lib/DBIx/Skinny/Mixin/ProxyTable.pm
 lib/DBIx/Skinny/ProxyTable.pm
 lib/DBIx/Skinny/ProxyTable/Rule.pm
