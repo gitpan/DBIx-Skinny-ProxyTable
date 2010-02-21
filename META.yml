@@ -27,4 +27,5 @@ requires:
   Filter::Util::Call: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.03
+  repository: git://github.com/walf443/p5-dbix-skinny-proxy_table.git
+version: 0.04
