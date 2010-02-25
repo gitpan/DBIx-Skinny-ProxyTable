@@ -1,5 +1,5 @@
 ---
-abstract: ~
+abstract: 'handling dynamic table for DBIx::Skinny'
 author:
   - 'Keiji Yoshimi <walf443 at gmail dot com>'
 build_requires:
@@ -28,4 +28,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/walf443/p5-dbix-skinny-proxy_table.git
-version: 0.04
+version: 0.05

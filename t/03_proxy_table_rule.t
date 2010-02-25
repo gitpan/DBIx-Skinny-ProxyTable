@@ -19,6 +19,18 @@ subtest 'user defined rule' => sub {
     done_testing();
 };
 
+subtest 'sprintf rule' => sub {
+    my $rule = $skinny->proxy_table->rule('error_log', '20100101');
+    is($rule->table_name, 'error_log_20100101', 'sprintf ok');
+    done_testing();
+};
+
+subtest 'keyword rule' => sub {
+    my $rule = $skinny->proxy_table->rule('fugafuga_log', year => 2010, month => 1);
+    is($rule->table_name, 'fugafuga_log_201001', 'keyword ok');
+    done_testing();
+};
+
 subtest 'strftime with DateTime' => sub {
     eval "use DateTime";
     plan skip_all => 'this test require DateTime' if $@;
@@ -46,9 +58,24 @@ subtest 'strftime with Time::Piece' => sub {
     done_testing();
 };
 
-subtest 'sprintf rule' => sub {
-    my $rule = $skinny->proxy_table->rule('error_log', '20100101');
-    is($rule->table_name, 'error_log_20100101', 'sprintf ok');
+subtest 'named_strftime with DateTime' => sub {
+    eval "use DateTime";
+    plan skip_all => 'this test require DateTime' if $@;
+    {
+        my $dt = DateTime->new(year => 2010, month => 1, day => 1);
+        my $rule = $skinny->proxy_table->rule('hogehoge_log', hogehoged_on => $dt);
+        is($rule->table_name, 'hogehoge_log_201001', 'named_strftime ok');
+    }
+    done_testing();
+};
+
+subtest 'named_strftime with Time::Piece' => sub {
+    eval { require 'Time::Piece' };
+    plan skip_all => 'this test require Time::Piece' if $@;
+    my $piece = Time::Piece->strptime('2010-01-01', '%Y-%m-%d');
+    my $rule = $skinny->proxy_table->rule('hogehoge_log', hogehoged_on => $piece);
+    $rule->copy_table;
+    is($rule->table_name, 'hogehoge_log_201001', 'named_strftime ok ( with Time::Piece)');
     done_testing();
 };
 

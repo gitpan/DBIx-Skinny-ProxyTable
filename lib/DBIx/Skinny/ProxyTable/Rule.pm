@@ -45,9 +45,29 @@ sub strftime {
     $dt->strftime($tmpl);
 }
 
+sub named_strftime {
+    my ($self, $tmpl, $key, %args) = @_;
+    if ( $args{$key} ) {
+        return $args{$key}->strftime($tmpl);
+    } else {
+        Carp::croak("can't find key $key for argument");
+    }
+}
+
 sub sprintf {
     my ($self, $tmpl, @args) = @_;
     CORE::sprintf($tmpl, @args);
+}
+
+sub keyword {
+    my ($self, $tmpl, %args) = @_;
+    my @binds;
+    $tmpl =~ s{<(%[^:]+):([A-Za-z_][A-Za-z0-9_]*)>}{
+        Carp::croak("$2 is not exists in hash") if !exists $args{$2};
+        push @binds, $args{$2};
+        $1
+    }ge;
+    return CORE::sprintf($tmpl, @binds);
 }
 
 1;
@@ -59,13 +79,13 @@ DBIx::Skinny::ProxyTable::Rule
 
 =head1 SYNOPSIS
 
-  my $rule = Proj::DB->proxy_table->rule('access_log', DateTime->today);
+  my $rule = Proj::DB->proxy_table->rule('access_log', accessed_on => DateTime->today);
   $rule->table_name; #=> "access_log_200901"
 
   # create table that name is "access_log_200901"
   $rule->copy_table;
 
-  my $iter = Proj::DB->search($rule->proxy_table, +{ });
+  my $iter = Proj::DB->search($rule->table_name, +{ });
 
 =head1 DESCRIPTION
 
