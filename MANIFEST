@@ -31,9 +31,11 @@ t/00_compile.t
 t/01_schema_proxy_rule.t
 t/02_proxy_table_set.t
 t/03_proxy_table_rule.t
+t/04_multi_skinny_instance.t
 t/Mock/Basic.pm
 t/Mock/Basic/Schema.pm
-xt/01_podspell.t
+t/Mock/BasicPlus.pm
+t/Mock/BasicPlus/Schema.pm
 xt/02_perlcritic.t
 xt/03_pod.t
 xt/perlcriticrc
