@@ -1,7 +1,7 @@
 package DBIx::Skinny::ProxyTable;
 use strict;
 use warnings;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 use DBIx::Skinny::ProxyTable::Rule;
 use Carp;
 
@@ -147,7 +147,7 @@ SQLite and MySQL only support.
 create DBIx::Skinny::ProxyTable::Rule object.
 @args is followed by your project skinny's schema definition.
 
-see also +<DBIx::Skinny::ProxyTable::Rule>
+see also L<DBIx::Skinny::ProxyTable::Rule>
 
 =head1 AUTHOR
 
@@ -155,7 +155,7 @@ Keiji Yoshimi E<lt>walf443 at gmail dot comE<gt>
 
 =head1 SEE ALSO
 
-+<DBIx::Skinny>, +<DBIx::Class::ProxyTable>
+L<DBIx::Skinny>, L<DBIx::Class::ProxyTable>
 
 =head1 LICENSE
 

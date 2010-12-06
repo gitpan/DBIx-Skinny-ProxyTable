@@ -9,13 +9,12 @@ readme_from 'lib/DBIx/Skinny/ProxyTable.pm';
 tests 't/*.t';
 author_tests 'xt';
 
-requires 'DBIx::Skinny';
+requires 'DBIx::Skinny', 0.0729;
 requires 'Carp';
 
 build_requires 'Test::More';
 build_requires 'Test::LoadAllModules';
 build_requires 'Module::Install::ReadmeFromPod';
-use_test_base;
 auto_include;
 auto_set_repository;
 WriteAll;
