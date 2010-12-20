@@ -24,4 +24,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/walf443/p5-dbix-skinny-proxy_table.git
-version: 0.07
+version: 0.08
