@@ -20,8 +20,8 @@ no_index:
     - xt
 requires:
   Carp: 0
-  DBIx::Skinny: 0.0729
+  DBIx::Skinny: 0.0732
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/walf443/p5-dbix-skinny-proxy_table.git
-version: 0.08
+version: 0.09
